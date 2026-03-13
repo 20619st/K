@@ -27,7 +27,7 @@ describe('score via slideRow delta', () => {
 // After restart: score = 0, bestScore retained
 
 describe('bestScore logic', () => {
-  it('bestScore stays 0 when score never exceeds it', () => {
+  it('bestScore updates to current score value', () => {
     let score = 0;
     let bestScore = 0;
     const { delta } = slideRow([2, 2, 0, 0]); // delta = 4
