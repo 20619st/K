@@ -1,0 +1,171 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #faf8ef;
+  color: #776e65;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #776e65;
+}
+
+.score-container {
+  display: flex;
+  gap: 8px;
+}
+
+.score-box {
+  background: #bbada0;
+  color: #f9f6f2;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 64px;
+}
+
+.score-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+#score-display,
+#best-score-display {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+#restart-btn,
+#overlay-restart-btn {
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#restart-btn:hover,
+#overlay-restart-btn:hover { background: #9f8b76; }
+
+/* ===== Game Board ===== */
+#game-board {
+  position: relative;
+  background: #bbada0;
+  border-radius: 8px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+  width: min(480px, 95vw);
+  height: min(480px, 95vw);
+}
+
+.cell {
+  background: rgba(238, 228, 218, 0.35);
+  border-radius: 4px;
+  position: relative;
+}
+
+/* ===== Tiles ===== */
+.tile {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1rem, 3.5vw, 2rem);
+  font-weight: 700;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+
+/* Tile color classes (original 2048 palette) */
+.tile-2    { background: #eee4da; color: #776e65; }
+.tile-4    { background: #ede0c8; color: #776e65; }
+.tile-8    { background: #f2b179; color: #f9f6f2; }
+.tile-16   { background: #f59563; color: #f9f6f2; }
+.tile-32   { background: #f67c5f; color: #f9f6f2; }
+.tile-64   { background: #f65e3b; color: #f9f6f2; }
+.tile-128  { background: #edcf72; color: #f9f6f2; font-size: clamp(0.8rem, 2.8vw, 1.6rem); }
+.tile-256  { background: #edcc61; color: #f9f6f2; font-size: clamp(0.8rem, 2.8vw, 1.6rem); }
+.tile-512  { background: #edc850; color: #f9f6f2; font-size: clamp(0.8rem, 2.8vw, 1.6rem); }
+.tile-1024 { background: #edc53f; color: #f9f6f2; font-size: clamp(0.6rem, 2.2vw, 1.3rem); }
+.tile-2048 { background: #edc22e; color: #f9f6f2; font-size: clamp(0.6rem, 2.2vw, 1.3rem); }
+.tile-super { background: #3c3a32; color: #f9f6f2; font-size: clamp(0.5rem, 1.8vw, 1.1rem); }
+
+/* ===== Message Overlay ===== */
+.message-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(238, 228, 218, 0.73);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 10;
+}
+
+.message-overlay.hidden {
+  display: none;
+}
+
+#message-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #776e65;
+  text-align: center;
+}
+
+.overlay-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+#continue-btn {
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#continue-btn:hover { background: #9f8b76; }
+
+/* ===== RWD ===== */
+@media (max-width: 520px) {
+  h1 { font-size: 2rem; }
+  .score-box { padding: 6px 10px; min-width: 50px; }
+  #score-display, #best-score-display { font-size: 1rem; }
+}
